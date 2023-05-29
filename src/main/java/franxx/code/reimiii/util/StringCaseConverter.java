@@ -21,4 +21,25 @@ public class StringCaseConverter {
 
         return builder.toString();
     }
+
+    public static String convertStringToCamelCase(String inputString) {
+        StringBuilder builder = new StringBuilder();
+
+        inputString = inputString.trim();
+
+        if (inputString.isEmpty() || inputString.isBlank()) {
+            throw new IllegalArgumentException("String cannot Empty or Blank");
+        }
+
+        String[] words = inputString.split("[\\s_-]+");
+        builder.append(words[0].toLowerCase());
+
+        for (int i = 1; i < words.length; i++) {
+            String word = words[i];
+            String caseWord = Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase();
+            builder.append(caseWord);
+        }
+
+        return builder.toString();
+    }
 }
