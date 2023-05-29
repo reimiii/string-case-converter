@@ -3,23 +3,29 @@ package franxx.code.reimiii.util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class StringCaseConverterTest {
+public class SarcasmCaseTest {
     @Test
     void testConvertStringToSarcasmCaseSuccess() {
         String input = "Hello World";
         var result = StringCaseConverter.convertStringToSarcasmCase(input);
+        System.out.println(result);
 
         Assertions.assertNotNull(input);
         Assertions.assertNotEquals(result, input);
-        Assertions.assertEquals(result, result);
+        Assertions.assertEquals("hElLo wOrLd", result);
     }
 
     @Test
-    void testConvertStringToSarcasmCaseFailedIsEmpty() {
-        String input = "";
+    void testConvertStringToSarcasmCaseFailedIsEmptyOrIsBlank() {
+        String inputEmpty = "";
+        String inputBlank = "    ";
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToSarcasmCase(input);
+            StringCaseConverter.convertStringToSarcasmCase(inputEmpty);
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            StringCaseConverter.convertStringToSarcasmCase(inputBlank);
         });
     }
 }
