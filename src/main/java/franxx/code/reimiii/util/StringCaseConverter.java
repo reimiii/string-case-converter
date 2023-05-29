@@ -42,4 +42,10 @@ public class StringCaseConverter {
 
         return builder.toString();
     }
+
+    public static String convertStringToSnakeCase(String inputString) {
+        String toCamelCase = convertStringToCamelCase(inputString);
+
+        return toCamelCase.replaceAll("([a-z])([A-Z]+)", "$1_$2").toLowerCase();
+    }
 }

@@ -8,7 +8,6 @@ public class SarcasmCaseTest {
     void testConvertStringToSarcasmCaseSuccess() {
         String input = "Hello World";
         var result = StringCaseConverter.convertStringToSarcasmCase(input);
-        System.out.println(result);
 
         Assertions.assertNotNull(input);
         Assertions.assertNotEquals(result, input);

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class CamelCaseTest {
     @Test
     void testConvertToStringCamelCaseSuccess() {
-        String input = "for well-done_documented   args";
+        String input = "   For well-done_Documented   args";
         var result = StringCaseConverter.convertStringToCamelCase(input);
 
         Assertions.assertNotNull(input);
