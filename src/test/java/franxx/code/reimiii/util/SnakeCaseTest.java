@@ -18,6 +18,7 @@ public class SnakeCaseTest {
     void testConvertToStringSnakeCaseFailedIsEmptyOrIsBlank() {
         String inputEmpty = "";
         String inputBlank = "    ";
+        String inputNotValidString = "@#$$%^#@! not a valid string";
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             StringCaseConverter.convertStringToSnakeCase(inputBlank);
@@ -25,6 +26,10 @@ public class SnakeCaseTest {
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             StringCaseConverter.convertStringToSnakeCase(inputEmpty);
+        });
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            StringCaseConverter.convertStringToSnakeCase(inputNotValidString);
         });
     }
 }
