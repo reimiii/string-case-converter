@@ -20,8 +20,9 @@ public class StringCaseConverter {
                 }
 
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid input: " + e.getMessage());
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Invalid input: " + exception.getMessage());
+            throw exception;
         }
 
         return builder.toString();
@@ -54,12 +55,16 @@ public class StringCaseConverter {
     }
 
     private static void isValidString(String inputString) {
-        if (inputString.isEmpty() || inputString.isBlank()) {
-            throw new IllegalArgumentException("String cannot Empty or Blank");
+        if (inputString.isEmpty()) {
+            throw new IllegalArgumentException("String cannot Empty");
+        }
+
+        if (inputString.isBlank()) {
+            throw new IllegalArgumentException("String cannot Blank");
         }
 
         if (!isValidRegex(inputString)) {
-            throw new IllegalArgumentException("String text contains only alphabets.");
+            throw new IllegalArgumentException("Text strings can only contain letters.");
         }
     }
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class SarcasmCaseTest {
     @Test
     void testConvertStringToSarcasmCaseSuccess() {
-        String input = "hello world!!";
+        String input = "hello world";
         var result = StringCaseConverter.convertStringToSarcasmCase(input);
         System.out.println(result);
 
