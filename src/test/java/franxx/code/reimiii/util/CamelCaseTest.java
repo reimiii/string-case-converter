@@ -31,7 +31,5 @@ public class CamelCaseTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
            StringCaseConverter.convertStringToCamelCase(inputNotValidString);
         });
-
-        System.out.println("is still on going?");
     }
 }

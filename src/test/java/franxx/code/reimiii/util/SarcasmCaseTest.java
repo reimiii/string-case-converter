@@ -6,9 +6,8 @@ import org.junit.jupiter.api.Test;
 public class SarcasmCaseTest {
     @Test
     void testConvertStringToSarcasmCaseSuccess() {
-        String input = "hello world";
+        String input = "Hello World";
         var result = StringCaseConverter.convertStringToSarcasmCase(input);
-        System.out.println(result);
 
         Assertions.assertNotNull(input);
         Assertions.assertNotEquals(result, input);
