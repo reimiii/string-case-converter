@@ -20,16 +20,10 @@ public class SarcasmCaseTest {
         String inputBlank = "    ";
         String inputNotValidString = "@#$$%^#@! not a valid string";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToSarcasmCase(inputEmpty);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToSarcasmCase(inputEmpty));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToSarcasmCase(inputBlank);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToSarcasmCase(inputBlank));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToSarcasmCase(inputNotValidString);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToSarcasmCase(inputNotValidString));
     }
 }

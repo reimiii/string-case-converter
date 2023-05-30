@@ -20,16 +20,10 @@ public class CamelCaseTest {
         String inputBlank = "    ";
         String inputNotValidString = "@#$$%^#@! not a valid string";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToCamelCase(inputBlank);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToCamelCase(inputBlank));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            StringCaseConverter.convertStringToCamelCase(inputEmpty);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToCamelCase(inputEmpty));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-           StringCaseConverter.convertStringToCamelCase(inputNotValidString);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> StringCaseConverter.convertStringToCamelCase(inputNotValidString));
     }
 }
