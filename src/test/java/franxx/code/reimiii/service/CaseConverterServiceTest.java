@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+
+import static org.mockito.Mockito.*;
+
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @Extensions({
@@ -21,16 +23,40 @@ public class CaseConverterServiceTest {
 
     @BeforeEach
     void setUp() {
-        repository = new CaseConverterRepositoryImpl();
+//        repository = new CaseConverterRepositoryImpl();
         service = new CaseConverterServiceImpl(repository);
     }
 
     @Test
-    void testShowHistory() {
-        service.addCaseConverter("Hello");
-        service.addCaseConverter("Hello1");
-        service.addCaseConverter("Hello2");
+    void testShowHistorySuccessClean() {
+        // Arrange
+        CaseConverter[] mockCaseConverters = {
+                new CaseConverter("Test1"),
+                new CaseConverter("Test2"),
+                null,
+                new CaseConverter("Test3"),
+                new CaseConverter("Test4"),
+                new CaseConverter("Test5"),
+                new CaseConverter("Test6"),
+        };
+
+        when(repository.getAll()).thenReturn(mockCaseConverters);
 
         service.showCaseConverter();
+
+        // assert
+        verify(repository, times(1)).getAll();
+    }
+
+    @Test
+    void testAddCaseConverterSuccessClean() {
+        // Arrange
+        String insertString = "Yahoo";
+
+        // Act
+        service.addCaseConverter(insertString);
+
+        // Assert
+        verify(repository, times(1)).add(new CaseConverter(insertString));
     }
 }
