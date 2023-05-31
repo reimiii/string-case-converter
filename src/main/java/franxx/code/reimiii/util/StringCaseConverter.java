@@ -5,31 +5,29 @@ import java.util.regex.Pattern;
 
 public class StringCaseConverter {
     public static String convertStringToSarcasmCase(String inputString) {
-        StringBuilder builder = new StringBuilder();
-
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             isValidString(inputString);
-            sarcasmCase(inputString, builder);
+            sarcasmCase(inputString, stringBuilder);
         } catch (IllegalArgumentException exception) {
             System.out.println("Invalid input: " + exception.getMessage());
             throw exception;
         }
 
-        return builder.toString();
+        return stringBuilder.toString();
     }
 
     public static String convertStringToCamelCase(String inputString) {
-        StringBuilder builder = new StringBuilder();
-
+        StringBuilder stringBuilder = new StringBuilder();
         try {
             isValidString(inputString);
-            camelCase(inputString, builder);
+            camelCase(inputString, stringBuilder);
         } catch (IllegalArgumentException exception) {
             System.out.println("Invalid input: " + exception.getMessage());
             throw exception;
         }
 
-        return builder.toString();
+        return stringBuilder.toString();
     }
 
     public static String convertStringToSnakeCase(String inputString) {
