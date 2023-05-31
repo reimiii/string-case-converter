@@ -6,4 +6,6 @@ public interface CaseConverterRepository {
     CaseConverter[] getAll();
 
     void add(CaseConverter converter);
+
+    boolean remove(Integer number);
 }
