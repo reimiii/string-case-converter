@@ -10,8 +10,12 @@ import org.junit.jupiter.api.extension.Extensions;
 import org.mockito.Mock;
 
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 @Extensions({
         @ExtendWith(MockitoExtension.class)
@@ -53,10 +57,18 @@ public class CaseConverterServiceTest {
         // Arrange
         String insertString = "Yahoo";
 
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
         // Act
         service.addCaseConverter(insertString);
 
-        // Assert
+        String expectedOutput = "Success convert to.. : " + insertString + "\n";
+        String actualOutput = outputStream.toString();
+
+        assertEquals(expectedOutput, actualOutput);
         verify(repository, times(1)).add(new CaseConverter(insertString));
+
+        System.setOut(System.out);
     }
 }

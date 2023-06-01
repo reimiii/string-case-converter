@@ -41,7 +41,7 @@ public class CaseConverterRepositoryImpl implements CaseConverterRepository {
         return true;
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         // check caseConverters full?
         var isFull = true;
         for (var i = 0; i < caseConverters.length; i++) {
@@ -55,7 +55,7 @@ public class CaseConverterRepositoryImpl implements CaseConverterRepository {
         return isFull;
     }
 
-    public void reSizeIfFull() {
+    private void reSizeIfFull() {
         // if full is true? then index length array resize 2*
         if (isFull()) {
             var temp = caseConverters;

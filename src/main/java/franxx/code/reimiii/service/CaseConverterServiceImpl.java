@@ -36,6 +36,12 @@ public class CaseConverterServiceImpl implements CaseConverterService {
 
     @Override
     public void removeCaseConverter(Integer number) {
+        boolean success = repository.remove(number);
 
+        if (success) {
+            System.out.println("Success remove case: " + number);
+        } else {
+            System.out.println("Failed remove case: " + number);
+        }
     }
 }
