@@ -25,11 +25,11 @@ public class CaseConverterServiceTest {
     private CaseConverterRepository repository;
     private CaseConverterService service;
 
-    @BeforeEach
-    void setUp() {
-//        repository = new CaseConverterRepositoryImpl();
-        service = new CaseConverterServiceImpl(repository);
-    }
+//    @BeforeEach
+//    void setUp() {
+////        repository = new CaseConverterRepositoryImpl();
+//        service = new CaseConverterServiceImpl(repository);
+//    }
 
     @Test
     void testShowHistorySuccessClean() {
@@ -70,5 +70,37 @@ public class CaseConverterServiceTest {
         verify(repository, times(1)).add(new CaseConverter(insertString));
 
         System.setOut(System.out);
+    }
+
+    @Test
+    void testRemoveCaseConverterSuccessClean() {
+        CaseConverter[] mockCaseConverters = {
+                new CaseConverter("Test1"),
+                new CaseConverter("Test2"),
+                null,
+                new CaseConverter("Test3"),
+        };
+
+        when(repository.getAll()).thenReturn(mockCaseConverters);
+
+        service.showCaseConverter();
+        service.removeCaseConverter(1);
+
+        service.showCaseConverter();
+    }
+
+    @Test
+    void testOne() {
+        CaseConverterService service = new CaseConverterServiceImpl(repository);
+        service.addCaseConverter("Hello World");
+        service.addCaseConverter("This is a test");
+
+        when(repository.remove(anyInt())).thenReturn(true);
+
+        service.removeCaseConverter(1);
+//        assertEquals("History case converter\n1. This is a test", service.showCaseConverter());
+
+        service.removeCaseConverter(2);
+//        assertEquals("History case converter", service.showCaseConverter());
     }
 }
